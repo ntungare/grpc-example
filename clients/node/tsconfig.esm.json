@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig.json",
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "outDir": "./dist/esm",
+        "declaration": false,
+        "declarationMap": false,
+        "declarationDir": null,
+        "emitDeclarationOnly": false
+    }
+}

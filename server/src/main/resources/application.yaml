@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: grpc
+
+server:
+  http2:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig.json",
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "./dist/cjs",
+        "declaration": false,
+        "declarationMap": false,
+        "declarationDir": null,
+        "emitDeclarationOnly": false
+    }
+}
