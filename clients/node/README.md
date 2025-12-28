@@ -50,3 +50,27 @@ pnpm run trial:esm
 # Run this to test both
 pnpm run trial
 ```
+
+## Testing
+
+To run unit tests:
+
+```bash
+pnpm run test:unit
+```
+
+To run integration tests (requires the gRPC server to be running):
+
+```bash
+# in one shell in the main folder
+./gradlew :server:bootRun
+
+# in another shell in this folder
+pnpm run test:integration
+```
+
+To run all tests:
+
+```bash
+pnpm run test
+```

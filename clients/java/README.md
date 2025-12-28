@@ -30,8 +30,17 @@ To run the client application using Gradle in the main folder:
 
 ## Testing
 
-To run unit and integration tests using Gradle in the main folder:
-
+To run unit tests using Gradle in the main folder:
 ```bash
 ./gradlew :clients:java:test
+```
+
+To run integration tests using Gradle in the main folder (requires the gRPC server to be running):
+
+```bash
+# in one shell
+./gradlew :server:bootRun
+
+# in another shell
+./gradlew :clients:java:integrationTest
 ```

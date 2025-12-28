@@ -61,5 +61,3 @@ tasks.register('integrationTest', Test) {
     classpath = sourceSets.integrationTest.runtimeClasspath
     shouldRunAfter test // Run unit tests first
 }
-
-check.dependsOn.add('integrationTest')
