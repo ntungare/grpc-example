@@ -2,7 +2,7 @@ version: v2
 clean: true
 
 inputs:
-  - directory: ../../proto/src/main/proto
+  - directory: ../../protos/src/main/proto
 
 plugins:
   - local: protoc-gen-ts_proto

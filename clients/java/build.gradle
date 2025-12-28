@@ -23,7 +23,7 @@ dependencyManagement {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-autoconfigure'
     implementation 'org.springframework.grpc:spring-grpc-client-spring-boot-starter'
-    implementation project(':proto')
+    implementation project(':protos')
     implementation 'io.grpc:grpc-netty-shaded'
 
     compileOnly 'org.projectlombok:lombok'
