@@ -1,4 +1,5 @@
 import { HelloGrpcClient } from './hello';
+
 import type { HelloRequest } from './generated/hello';
 
 describe('HelloGrpcClient', () => {

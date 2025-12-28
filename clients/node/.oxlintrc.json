@@ -25,16 +25,11 @@
     },
     "overrides": [
         {
-            "files": [
-                "**/*.test.ts",
-                "**/*.int.test.ts"
-            ],
+            "files": ["**/*.test.ts", "**/*.int.test.ts"],
             "env": {
                 "jest": true
             },
-            "plugins": [
-                "jest"
-            ]
+            "plugins": ["jest"]
         }
     ]
 }

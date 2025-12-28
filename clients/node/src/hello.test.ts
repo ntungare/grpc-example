@@ -1,12 +1,28 @@
-import { HelloGrpcClient } from './hello';
+import { status, Metadata } from '@grpc/grpc-js';
+
 import { HelloServiceClient } from './generated/hello';
+import { HelloGrpcClient } from './hello';
+
+import type { ServiceError } from '@grpc/grpc-js';
+
 import type { HelloRequest, HelloResponse } from './generated/hello';
 
 jest.mock('./generated/hello');
 
 const MockedHelloServiceClient = HelloServiceClient as jest.MockedClass<typeof HelloServiceClient>;
-const mockedSayHello = jest.fn();
-MockedHelloServiceClient.prototype.sayHello = mockedSayHello;
+
+class CustomError extends Error implements ServiceError {
+    code: status;
+    details: string;
+    metadata: Metadata;
+
+    constructor(message: string) {
+        super(message);
+        this.code = status.UNAVAILABLE;
+        this.details = message;
+        this.metadata = new Metadata();
+    }
+}
 
 describe('HelloGrpcClient', () => {
     it('should call sayHello and resolve with the response', async () => {
@@ -17,10 +33,15 @@ describe('HelloGrpcClient', () => {
         const response: HelloResponse = {
             message: 'Hello John Doe',
         };
-        mockedSayHello.mockImplementation((receivedRequest, callback) => {
-            expect(receivedRequest).toEqual(request);
-            callback(null, response);
-        });
+        MockedHelloServiceClient.prototype.sayHello.mockImplementation(
+            (
+                receivedRequest: HelloResponse,
+                callback: (error: ServiceError | null, response: HelloResponse) => void
+            ) => {
+                expect(receivedRequest).toEqual(request);
+                callback(null, response);
+            }
+        );
         const result = await client.callSayHello(request);
         expect(result).toEqual(response);
     });
@@ -30,10 +51,15 @@ describe('HelloGrpcClient', () => {
         const request: HelloRequest = {
             name: 'John Doe',
         };
-        mockedSayHello.mockImplementation((receivedRequest, callback) => {
-            expect(receivedRequest).toEqual(request);
-            callback(new Error('Something went wrong'), null);
-        });
+        MockedHelloServiceClient.prototype.sayHello.mockImplementation(
+            (
+                receivedRequest: HelloResponse,
+                callback: (error: ServiceError | null, response: HelloResponse) => void
+            ) => {
+                expect(receivedRequest).toEqual(request);
+                callback(new CustomError('Something went wrong'), null);
+            }
+        );
         await expect(client.callSayHello(request)).rejects.toThrow('Something went wrong');
     });
 });
