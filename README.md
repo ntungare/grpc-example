@@ -12,7 +12,31 @@ The project is organized into the following components:
   - **[`java`](./clients/java)**: A Java + Spring Boot based gRPC client.
   - **[`node`](./clients/node)**: A Node.js gRPC client.
 
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- **Java 25**: Required for the server and Java client.
+- **Node.js**: Required for the Node.js client (LTS version recommended).
+- **pnpm**: Used as the package manager for the Node.js client.
+
 ## Getting Started
+
+### Global Build
+
+This project uses the Gradle Wrapper for the Java components. To build the entire project (including protos, server, and Java client):
+
+```bash
+./gradlew build
+```
+
+### Running Tests
+
+To run unit tests across all Java modules:
+
+```bash
+./gradlew test
+```
 
 Please refer to the README in each subdirectory for specific instructions on building and running each component.
 

@@ -8,10 +8,30 @@ This is a Java + Spring Boot based gRPC client application.
 - **Shared Protos**: Consumes the definitions from the [protos](../../protos) project.
 - **Dependency Management**: Uses the project's Gradle build to manage dependencies and proto integration.
 
-## Running the Client
+## Prerequisites
 
-To run the client, use the Gradle wrapper from the root directory:
+- **Java 25**: This project utilizes language features from Java 25. Ensure your environment is configured correctly.
+
+## Building
+
+To build the client and run tests using Gradle in the main folder:
 
 ```bash
-./gradlew :clients:java:clean :clients:java:build
+./gradlew :clients:java:build
+```
+
+## Running the Client
+
+To run the client application using Gradle in the main folder:
+
+```bash
+./gradlew :clients:java:bootRun
+```
+
+## Testing
+
+To run unit and integration tests using Gradle in the main folder:
+
+```bash
+./gradlew :clients:java:test
 ```
