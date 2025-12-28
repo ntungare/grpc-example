@@ -1,6 +1,7 @@
 import * as grpc from '@grpc/grpc-js';
 
 import { HelloServiceClient } from './generated/hello';
+
 import type { HelloRequest, HelloResponse } from './generated/hello';
 
 export class HelloGrpcClient {

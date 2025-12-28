@@ -6,8 +6,10 @@ inputs:
 
 plugins:
   - local: protoc-gen-ts_proto
+    strategy: all
     opt:
-      - outputServices=grpc-js
-      - esModuleInterop=true
       - env=node
+      - esModuleInterop=true
+      - importSuffix=.js
+      - outputServices=grpc-js
     out: src/generated
